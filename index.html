@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Micro Project #3</title>
+  </head>
+  <body>
+    <h1>Micro Project #3</h1>
+    <ul id="navbar">
+      <li><button id="allFood">List all Food items</button></li>
+      <li><button id="vegetableBtn">List all Vegetables</button></li>
+      <li><button id="fruitsBtn">List all Fruits</button></li>
+      <li><button id="protineBtn">List all Protien items</button></li>
+      <li><button id="nutsBtn">List all Nuts</button></li>
+      <li><button id="grainBtn">List all Grains</button></li>
+      <li><button id="dairyBtn">List all dairy items</button></li>
+      <li>
+        <button id="calSort>100Btn">
+          List all Food items with calorie above 100
+        </button>
+      </li>
+      <li>
+        <button id="calSort<100Btn">
+          List all Food items with calorie below 100
+        </button>
+      </li>
+      <li>
+        <button id="desProtien">
+          List all Food items with highest protien content to lowest
+        </button>
+      </li>
+      <li>
+        <button id="ascCab">
+          List all Food items with lowest cab content to highest
+        </button>
+      </li>
+    </ul>
+    <p>Selected Content:</p>
+    <div id="contentWindow">
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Food Name</th>
+          <th>calorie</th>
+          <th>category</th>
+          <th>protiens</th>
+          <th>cab</th>
+        </tr>
+        <tbody id="generatedTable"></tbody>
+      </table>
+    </div>
+    <script type="module" src="script.js"></script>
+    <!-- <script type="json" src="data.json"></script> -->
+  </body>
+</html>

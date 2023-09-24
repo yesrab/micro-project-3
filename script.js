@@ -1,5 +1,6 @@
 "use strict";
-const jsonData = require("./data.json");
+// const jsonData = require("./data.json");
+import jsonData from "./data.json" assert { type: "json" };
 
 function listAllItems(array) {
   array.forEach((items) => {
@@ -38,58 +39,81 @@ function objectSorter(category, order, array) {
   });
 }
 
-// calculating all the food items with category vegitables
-let Vegetables = objectSelector("category", "Vegetable", jsonData);
-// calculating all the food items with category fruits
-let fruits = objectSelector("category", "Fruit", jsonData);
-// calculating all the food items with category Protein
-let Proteins = objectSelector("category", "Protein", jsonData);
-// calculating all the food items with category Nuts
-let Nuts = objectSelector("category", "Nuts", jsonData);
-// calculating all the food items with category Grains
-let Grains = objectSelector("category", "Grain", jsonData);
-// calculating all the food items with category Dairy
-let Dairy = objectSelector("category", "Dairy", jsonData);
-//For sorting food items Caloury above 100
-let calAbove100 = objectSelector("calorie", 100, jsonData, ">");
-// For sorting food items Caloury below 100
-let calbelow100 = objectSelector("calorie", 100, jsonData, "<");
-// All sorted food items with highest protien content to lowest
-let decProtien = objectSorter("protiens", "descending", jsonData);
-// All sorted food items with lowest cab content to highest
-let ascCab = objectSorter("cab", "ascending", jsonData);
+function tableBuilder(array) {
+  let tableRow = document.getElementById("generatedTable");
+  let row = ``;
+  tableRow.innerHTML = "";
+  array.forEach((object) => {
+    row = `<tr>
+    <td>${object.id}</td>
+    <td>${object.foodname}</td>
+    <td>${object.calorie}</td>
+    <td>${object.category}</td>
+    <td>${object.protiens}</td>
+    <td>${object.cab}</td>
+    </tr>`;
+    tableRow.innerHTML += row;
+  });
+}
+//load table by default
+tableBuilder(jsonData);
+//load all food contents
+const allFoodbtn = document.getElementById("allFood");
+allFoodbtn.addEventListener("click", () => {
+  tableBuilder(jsonData);
+});
+const vegBtn = document.getElementById("vegetableBtn");
+vegBtn.addEventListener("click", () => {
+  const Vegetables = objectSelector("category", "Vegetable", jsonData);
+  tableBuilder(Vegetables);
+});
+const frtBtn = document.getElementById("fruitsBtn");
+frtBtn.addEventListener("click", () => {
+  const fruits = objectSelector("category", "Fruit", jsonData);
+  tableBuilder(fruits);
+});
 
-//log section
-// Listing all the food items
-console.log("Here are all the food items :");
-console.log(listAllItems(jsonData));
-// Listing all the food items with category vegitables
-console.log("Here are all the food items in vegetable category :");
-console.log(listAllItems(Vegetables));
-// Listing all the food items with category fruits
-console.log("Here are all the food items in Fruits category :");
-console.log(listAllItems(fruits));
-// Listing all the food items with category Protein
-console.log("Here are all the food items in Proteins category :");
-console.log(listAllItems(Proteins));
-// Listing all the food items with category Nuts
-console.log("Here are all the food items in Nuts category :");
-console.log(listAllItems(Nuts));
-// Listing all the food items with category Grains
-console.log("Here are all the food items in Grains category :");
-console.log(listAllItems(Grains));
-// Listing all the food items with category Dairy
-console.log("Here are all the food items in Dairy category :");
-console.log(listAllItems(Dairy));
-//For food items Caloury above 100
-console.log("all items with calorie above 100");
-console.log(listAllItems(calAbove100));
-// For food items Caloury below 100
-console.log("All items with calorie below 100");
-console.log(listAllItems(calbelow100));
-// All the food items with highest protien content to lowest
-console.log("food items in descending order per Protien");
-console.log(listAllItems(decProtien));
-// All the food items with lowest cab content to highest
-console.log("food items in ascending order per Cab");
-console.log(listAllItems(ascCab));
+const proBtn = document.getElementById("protineBtn");
+proBtn.addEventListener("click", () => {
+  const Proteins = objectSelector("category", "Protein", jsonData);
+  tableBuilder(Proteins);
+});
+
+const nuBtn = document.getElementById("nutsBtn");
+nuBtn.addEventListener("click", () => {
+  const Nuts = objectSelector("category", "Nuts", jsonData);
+  tableBuilder(Nuts);
+});
+
+const grBtn = document.getElementById("grainBtn");
+grBtn.addEventListener("click", () => {
+  const Grains = objectSelector("category", "Grain", jsonData);
+  tableBuilder(Grains);
+});
+
+const darBtn = document.getElementById("dairyBtn");
+darBtn.addEventListener("click", () => {
+  const Dairy = objectSelector("category", "Dairy", jsonData);
+  tableBuilder(Dairy);
+});
+const sortAboveBtn = document.getElementById("calSort>100Btn");
+sortAboveBtn.addEventListener("click", () => {
+  const calAbove100 = objectSelector("calorie", 100, jsonData, ">");
+  tableBuilder(calAbove100);
+});
+const sortBelowBtn = document.getElementById("calSort<100Btn");
+sortBelowBtn.addEventListener("click", () => {
+  const calbelow100 = objectSelector("calorie", 100, jsonData, "<");
+  tableBuilder(calbelow100);
+});
+
+const desBtn = document.getElementById("desProtien");
+desBtn.addEventListener("click", () => {
+  const decProtien = objectSorter("protiens", "descending", jsonData);
+  tableBuilder(decProtien);
+});
+const ascCabBtn = document.getElementById("ascCab");
+ascCabBtn.addEventListener("click", () => {
+  const ascCab = objectSorter("cab", "ascending", jsonData);
+  tableBuilder(ascCab);
+});
