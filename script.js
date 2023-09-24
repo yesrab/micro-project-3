@@ -62,56 +62,61 @@ const allFoodbtn = document.getElementById("allFood");
 allFoodbtn.addEventListener("click", () => {
   tableBuilder(jsonData);
 });
+//list all vegs
 const vegBtn = document.getElementById("vegetableBtn");
 vegBtn.addEventListener("click", () => {
   const Vegetables = objectSelector("category", "Vegetable", jsonData);
   tableBuilder(Vegetables);
 });
+//list all fruit
 const frtBtn = document.getElementById("fruitsBtn");
 frtBtn.addEventListener("click", () => {
   const fruits = objectSelector("category", "Fruit", jsonData);
   tableBuilder(fruits);
 });
-
+//list all protine
 const proBtn = document.getElementById("protineBtn");
 proBtn.addEventListener("click", () => {
   const Proteins = objectSelector("category", "Protein", jsonData);
   tableBuilder(Proteins);
 });
-
+//list all nuts
 const nuBtn = document.getElementById("nutsBtn");
 nuBtn.addEventListener("click", () => {
   const Nuts = objectSelector("category", "Nuts", jsonData);
   tableBuilder(Nuts);
 });
-
+// list all grain
 const grBtn = document.getElementById("grainBtn");
 grBtn.addEventListener("click", () => {
   const Grains = objectSelector("category", "Grain", jsonData);
   tableBuilder(Grains);
 });
-
+//list all dairy
 const darBtn = document.getElementById("dairyBtn");
 darBtn.addEventListener("click", () => {
   const Dairy = objectSelector("category", "Dairy", jsonData);
   tableBuilder(Dairy);
 });
+//load all cal above 100
 const sortAboveBtn = document.getElementById("calSort>100Btn");
 sortAboveBtn.addEventListener("click", () => {
   const calAbove100 = objectSelector("calorie", 100, jsonData, ">");
   tableBuilder(calAbove100);
 });
+//load all cal above 100
 const sortBelowBtn = document.getElementById("calSort<100Btn");
 sortBelowBtn.addEventListener("click", () => {
   const calbelow100 = objectSelector("calorie", 100, jsonData, "<");
   tableBuilder(calbelow100);
 });
-
+//load decending order by protien
 const desBtn = document.getElementById("desProtien");
 desBtn.addEventListener("click", () => {
   const decProtien = objectSorter("protiens", "descending", jsonData);
   tableBuilder(decProtien);
 });
+//load ascending order by cab
 const ascCabBtn = document.getElementById("ascCab");
 ascCabBtn.addEventListener("click", () => {
   const ascCab = objectSorter("cab", "ascending", jsonData);
