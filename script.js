@@ -1,6 +1,7 @@
 "use strict";
 // const jsonData = require("./data.json");
 // import jsonData from "./data.json" assert { type: "json" };
+// implemented fetch so that frontend works in all the browsers
 let jsonData;
 
 fetch("./data.json")
